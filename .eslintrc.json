@@ -1,6 +1,7 @@
 {
   "extends": "./node_modules/standard/eslintrc.json",
   "rules": {
-    "space-before-function-paren": ["error", "never"]
+    "space-before-function-paren": ["error", "always"],
+    "multiline-ternary": ["error", "never"]
   }
 }

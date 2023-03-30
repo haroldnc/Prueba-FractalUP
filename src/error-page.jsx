@@ -16,7 +16,7 @@ const ErrorPage = () => {
       <p className='text-xl text-center lg:text-2xl'>
         Lo sentimos, se ha producido un error inesperado.
       </p>
-      <p className='lg:text-xl'>
+      <p className='lg:text-xl text-center'>
         <i>{error.statusText || error.message}</i>
       </p>
     </main>

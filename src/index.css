@@ -2,8 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* ========== COLORS ========== */
+  --red-principal: #e86060;
+  --dark-red-secondary: #662323;
+  --soft-gray: #bdbdbd;
+  --gray: #828282;
+  --light-red: #ff7676;
+}
+
 html,
 body {
   width: 100%;
   height: 100%;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
 }
