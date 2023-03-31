@@ -6,17 +6,17 @@ const ErrorPage = () => {
   const error = useRouteError()
 
   return (
-    <main className='w-screen h-screen flex flex-col justify-center items-center gap-4'>
+    <main className='flex h-screen w-screen flex-col items-center justify-center gap-4'>
       <img
         className='scale-75 lg:scale-100'
         src={CatLogo}
         alt='Logo de Foxbel'
       />
-      <h1 className='font-bold text-5xl'>Oops!</h1>
-      <p className='text-xl text-center lg:text-2xl'>
+      <h1 className='text-5xl font-bold'>Oops!</h1>
+      <p className='text-center text-xl lg:text-2xl'>
         Lo sentimos, se ha producido un error inesperado.
       </p>
-      <p className='lg:text-xl text-center'>
+      <p className='text-center lg:text-xl'>
         <i>{error.statusText || error.message}</i>
       </p>
     </main>
