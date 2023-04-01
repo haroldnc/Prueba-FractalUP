@@ -1,4 +1,4 @@
-import { useRouteError } from 'react-router-dom'
+import { Link, useRouteError } from 'react-router-dom'
 /* Assets */
 import CatLogo from './assets/foxbel-music-icon@3x.png'
 
@@ -19,6 +19,9 @@ const ErrorPage = () => {
       <p className='text-center lg:text-xl'>
         <i>{error.statusText || error.message}</i>
       </p>
+      <Link className='mt-4 text-2xl text-primary-color hover:underline' to='/'>
+        Volver
+      </Link>
     </main>
   )
 }

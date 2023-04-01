@@ -16,7 +16,7 @@ const Controls = ({
         onClick={handlePrevSong}
       />
     )}
-    <div className='rounded-full bg-quinary-color hover:bg-secondary-color flex justify-center items-center sm:w-[60px] sm:h-[60px] w-[36px] h-[36px]'>
+    <div className='flex h-[36px] w-[36px] items-center justify-center rounded-full bg-quinary-color hover:bg-secondary-color sm:h-[60px] sm:w-[60px]'>
       {isPlaying ? (
         <BsFillPauseFill
           color='#FFFFFF'

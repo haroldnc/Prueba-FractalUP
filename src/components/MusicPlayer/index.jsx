@@ -27,7 +27,7 @@ const MusicPlayer = () => {
   if (!activeSong) return null
 
   return (
-    <aside className='fixed bottom-0 left-0 flex h-16 w-screen justify-center bg-primary-color sm:h-24'>
+    <aside className='fixed bottom-0 left-0 z-[60] flex h-16 w-screen justify-center bg-primary-color sm:h-24'>
       <div className='relative flex h-full w-full max-w-7xl items-center justify-between pr-2 sm:justify-center'>
         <Track
           picture={activeSong.album.cover}
