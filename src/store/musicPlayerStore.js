@@ -103,7 +103,7 @@ export const useMusicPlayerStore = create((set) => ({
       })
       .then((res) => res.data?.data)
 
-    const recentSongs = JSON.parse(window.localStorage.getItem('recentSongs'))
+    let recentSongs = JSON.parse(window.localStorage.getItem('recentSongs'))
     const data = [...response.map((song) => song.artist)]
     const artists = []
     const albums = []
@@ -113,6 +113,8 @@ export const useMusicPlayerStore = create((set) => ({
         artists.push(x)
       }
     }
+
+    if (!recentSongs) recentSongs = []
 
     for (const x of recentSongs) {
       if (!albums.find((album) => album.id === x.album.id)) {
