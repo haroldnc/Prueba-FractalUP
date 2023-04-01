@@ -101,10 +101,10 @@ export const useMusicPlayerStore = create((set) => ({
           'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
         }
       })
-      .then((res) => res.data)
+      .then((res) => res.data?.data)
 
     const recentSongs = JSON.parse(window.localStorage.getItem('recentSongs'))
-    const data = [...response?.tracks?.data.map((song) => song.artist)]
+    const data = [...response.map((song) => song.artist)]
     const artists = []
     const albums = []
 
@@ -123,7 +123,7 @@ export const useMusicPlayerStore = create((set) => ({
     set((state) => {
       const newState = {
         ...state,
-        songs: [...response?.tracks?.data],
+        songs: [...response],
         artists,
         albums
       }
@@ -131,7 +131,7 @@ export const useMusicPlayerStore = create((set) => ({
       if (!recentSongs) {
         window.localStorage.setItem(
           'recentSongs',
-          JSON.stringify([...response?.tracks?.data])
+          JSON.stringify([...response])
         )
       } else {
         newState.currentSongs = recentSongs

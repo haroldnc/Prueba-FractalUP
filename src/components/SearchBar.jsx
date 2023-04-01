@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineClose } from 'react-icons/ai'
 import { BsFillPersonFill } from 'react-icons/bs'
 import NavBar from './NavBar'
@@ -9,6 +9,7 @@ import logo from '../assets/foxbel-music@3x.png'
 
 const SearchBar = () => {
   const { pathname, search } = useLocation()
+  const navigate = useNavigate()
   const { searchSongsByNameOrAlbum } = useMusicPlayerStore((state) => state)
   const [open, setOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
@@ -18,9 +19,9 @@ const SearchBar = () => {
 
   const handlePlay = async () => {
     if (pathname !== '/canciones') {
-      window.location.pathname = `/canciones?q=${searchText}`
+      navigate(`/canciones?q=${searchText}`)
     } else {
-      await searchSongsByNameOrAlbum(search)
+      await searchSongsByNameOrAlbum(searchText)
     }
   }
 

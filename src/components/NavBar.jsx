@@ -4,7 +4,6 @@ import logo from '../assets/foxbel-music@3x.png'
 import './css/NavBar.css'
 
 const NavBar = () => {
-  // const { isActive } = useMusicPlayerStore((state) => state.isActive)
   const { pathname } = useLocation()
   const route = useMemo(() => {
     if (pathname === '/') return null
@@ -14,7 +13,7 @@ const NavBar = () => {
 
   return (
     <nav className='max-w-screen relative z-50 flex h-full min-h-screen w-[320px] flex-col items-center gap-8 bg-secondary-color py-6 sm:py-12'>
-      <NavLink>
+      <NavLink to='/'>
         <img src={logo} alt='Logo de Foxbel Music' className='w-3/4' />
       </NavLink>
       <div className='flex w-full flex-col gap-8 px-10'>
