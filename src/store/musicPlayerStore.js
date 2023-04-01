@@ -91,9 +91,17 @@ export const useMusicPlayerStore = create((set) => ({
   },
 
   getTopSongs: async () => {
-    const response = await axios(`${import.meta.env.VITE_API_URL}/chart`).then(
-      (res) => res.data
-    )
+    const response = await axios
+      .request({
+        method: 'GET',
+        url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
+        params: { q: 'a' },
+        headers: {
+          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+        }
+      })
+      .then((res) => res.data)
 
     const recentSongs = JSON.parse(window.localStorage.getItem('recentSongs'))
     const data = [...response?.tracks?.data.map((song) => song.artist)]
@@ -138,25 +146,47 @@ export const useMusicPlayerStore = create((set) => ({
   },
 
   getAlbum: async (id) => {
-    const response = await axios(
-      `${import.meta.env.VITE_API_URL}/album/${id}`
-    ).then((res) => res.data)
+    const response = await axios
+      .request({
+        method: 'GET',
+        url: `https://deezerdevs-deezer.p.rapidapi.com/album/${id}`,
+        headers: {
+          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+        }
+      })
+      .then((res) => res.data)
 
     return response
   },
 
   getArtist: async (artistID) => {
-    const artist = await axios(
-      `${import.meta.env.VITE_API_URL}/artist/${artistID}`
-    ).then((res) => res.data)
+    const artist = await axios
+      .request({
+        method: 'GET',
+        url: `https://deezerdevs-deezer.p.rapidapi.com/artist/${artistID}`,
+        headers: {
+          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+        }
+      })
+      .then((res) => res.data)
 
     return artist
   },
 
   getAlbumsOfArtist: async (name, artistID) => {
-    const response = await axios(
-      `${import.meta.env.VITE_API_URL}/search?q=name:${name}`
-    ).then((res) => res.data?.data)
+    const response = await axios
+      .request({
+        method: 'GET',
+        url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
+        params: { q: name },
+        headers: {
+          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+        }
+      })
+      .then((res) => res.data?.data)
 
     const albums = response
       .filter((song) => song.artist.id === +artistID)
@@ -169,9 +199,17 @@ export const useMusicPlayerStore = create((set) => ({
   },
 
   searchSongs: async (text) => {
-    const response = await axios(
-      `${import.meta.env.VITE_API_URL}/search?q=${text}`
-    ).then((r) => r.data?.data)
+    const response = await axios
+      .request({
+        method: 'GET',
+        url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
+        params: { q: text },
+        headers: {
+          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+        }
+      })
+      .then((r) => r.data?.data)
 
     set((state) => ({
       ...state,
@@ -180,11 +218,19 @@ export const useMusicPlayerStore = create((set) => ({
   },
 
   searchSongsByNameOrAlbum: async (text) => {
-    const response = await axios(
-      `${import.meta.env.VITE_API_URL}/search?q=${text}`
-    ).then((r) => {
-      return r.data?.data
-    })
+    const response = await axios
+      .request({
+        method: 'GET',
+        url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
+        params: { q: text },
+        headers: {
+          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+          'X-RapidAPI-Host': import.meta.env.VITE_RAPIDAPI_HOST
+        }
+      })
+      .then((r) => {
+        return r.data?.data
+      })
 
     const regExp = new RegExp(text.toLowerCase(), 'i')
 
