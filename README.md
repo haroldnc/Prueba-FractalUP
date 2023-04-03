@@ -33,4 +33,4 @@ Esto compila el proyecto y crea una carpeta `dist` con los archivos de producci√
 
 ## Deploy
 
-El deploy fue realizado usando Netlify y se puede acceder desde el siguiente link https://gorgeous-frangollo-9bb4f9.netlify.app/canciones?q=eminen
+El deploy fue realizado usando Netlify y se puede acceder desde el siguiente link https://gorgeous-frangollo-9bb4f9.netlify.app
